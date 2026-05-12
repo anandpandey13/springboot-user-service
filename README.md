@@ -23,3 +23,20 @@ Request payload
   "id":1  
 }  
 If we do not put any of these 3 fields then that value becomes null.  
+
+## Implemented service and entity  
+### Below Requests can me made now -  
+- GET http://localhost:8080/users  
+No available users  
+OR  
+Available users are [User [id=1, name=Anand, age=2], User [id=2, name=Kumar, age=4]]  
+- POST http://localhost:8080/user  
+Request payload  
+{  
+  "name": "Anand",  
+  "age": 29,  
+  "id":1  
+}  
+User is created User [id=2, name=Kumar, age=4]  
+If we do not put any of these 3 fields or with invalid value then that user will not be created  
+It will show message as Invalid User/name/id respectively.  
