@@ -89,4 +89,22 @@ Response2 -
     "message": "Invalid age",
     "status": "FAILURE"
 }
-The Data has now become structured.
+The Data has now become structured.  
+
+## Implemented Exception handling centrally
+- POST http://localhost:8080/user  
+{  
+  "name": "Anand",  
+  "age": 2  
+}  
+We did not put id here, so this request should not be processed. Below is the output  
+{  
+    "data": {  
+        "age": 2,  
+        "id": 0,  
+        "name": "Anand"  
+    },  
+    "message": "Invalid id",  
+    "status": "FAILURE"  
+}  
+Note - We did not enter id in request payload so user was not created but in side our code we have mentioned primitive data type int of id, hence default value zero was assigned. We will fix this using Integer wrapper class in next commmit.  
