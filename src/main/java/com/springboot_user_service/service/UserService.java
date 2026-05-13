@@ -3,6 +3,8 @@ package com.springboot_user_service.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.springboot_user_service.dto.UserDto;
@@ -15,7 +17,7 @@ public class UserService {
 
     List<User> list = new ArrayList<User>();
 
-    public ApiResponse createUser(UserDto userDto){
+    public ResponseEntity<ApiResponse> createUser(UserDto userDto){
 
         if(userDto==null || userDto.getName()==null || userDto.getName().isBlank())
             //return new ApiResponse("Invalid name", "FAILURE");
@@ -34,15 +36,15 @@ public class UserService {
         user.setName(userDto.getName());
         list.add(user);
 
-        return new ApiResponse("User is created ", "SUCCESS", user);
+        //return new ApiResponse("User is created ", "SUCCESS", user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("User is created ", "SUCCESS", user));
     }
 
-    public ApiResponse getAllUser(){
+    public ResponseEntity<ApiResponse> getAllUser(){
         if(list.isEmpty())
-            return new ApiResponse("No available users", "SUCCESS");
-        return new ApiResponse("Available users are ", "SUCCESS", list);
-
-        
+        //return new ApiResponse("No available users", "SUCCESS");
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("No available users", "SUCCESS"));
+        //return new ApiResponse("Available users are ", "SUCCESS", list);
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Available users are ", "SUCCESS", list));
     }
-
 }

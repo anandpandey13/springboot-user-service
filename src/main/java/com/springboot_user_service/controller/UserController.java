@@ -1,6 +1,7 @@
 package com.springboot_user_service.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,13 +28,13 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public ApiResponse createUser(@RequestBody UserDto userDto){
+    public ResponseEntity<ApiResponse> createUser(@RequestBody UserDto userDto){
         return userService.createUser(userDto);
     }
 
     @GetMapping("/users")
-    public ApiResponse getAllUser(){
+    public ResponseEntity<ApiResponse> getAllUser(){
         return userService.getAllUser();
     }
-    
+
 }

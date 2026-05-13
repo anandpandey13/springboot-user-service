@@ -108,3 +108,10 @@ We did not put id here, so this request should not be processed. Below is the ou
     "status": "FAILURE"  
 }  
 Note - We did not enter id in request payload so user was not created but in side our code we have mentioned primitive data type int of id, hence default value zero was assigned. We will fix this using Integer wrapper class in next commmit.  
+
+### Implemented ResponseEntity to return status code as part of HTTP response metadata
+- ResponseEntity = manual control over HTTP response metadata + body  
+(HTTP protocol meta data means status code (200, 404, 500), headers, content type, response body(payload))  
+- In case of throw Exception, we can return anything, it is not mandatory to return a ResponseEmtity or ApiResponse type.  
+Because when exception occurs, the flow of program comes out of the method without expecting to return anything.  
+After these chnages, we have status also like 400:Bad Request or 200:OK or 201:Created  
