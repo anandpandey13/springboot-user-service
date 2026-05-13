@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot_user_service.dto.UserDto;
+import com.springboot_user_service.response.ApiResponse;
 import com.springboot_user_service.service.UserService;
 
 @RestController
@@ -26,13 +27,13 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public String createUser(@RequestBody UserDto userDto){
+    public ApiResponse createUser(@RequestBody UserDto userDto){
         return userService.createUser(userDto);
     }
 
     @GetMapping("/users")
-    public String getAllUser(){
+    public ApiResponse getAllUser(){
         return userService.getAllUser();
     }
-
+    
 }
