@@ -1,5 +1,10 @@
 package com.springboot_user_service.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({"message", "status","data"})
 public class ApiResponse {
     private String message;
     private String status;

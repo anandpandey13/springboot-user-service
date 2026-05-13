@@ -22,18 +22,24 @@ public class UserService {
         if(userDto==null || userDto.getName()==null || userDto.getName().isBlank())
             //return new ApiResponse("Invalid name", "FAILURE");
         throw new InvalidInputException("Invalid name", userDto);
-        if(userDto==null ||userDto.getAge()<1)
+        if(userDto==null ||userDto.getAge()==null||userDto.getAge()<1)
             //return new ApiResponse("Invalid age", "FAILURE");
         throw new InvalidInputException("Invalid age", userDto);
-        if(userDto==null ||userDto.getId()<1)
+        if(userDto==null ||userDto.getId()==null||userDto.getId()<1)
             //return new ApiResponse("Invalid id", "FAILURE");
         throw new InvalidInputException("Invalid id", userDto);
-
 
         User user = new User();
         user.setAge(userDto.getAge());
         user.setId(userDto.getId());
         user.setName(userDto.getName());
+        /*
+        Here, userDto.getAge() returns an Integer, while user.setAge() expects an int
+        Java does this unboxing from Integer to int
+        This can break if Integer has null value and if we try to assign it for int type,
+        but we already made a null check above and returned as invalid data.
+         */
+
         list.add(user);
 
         //return new ApiResponse("User is created ", "SUCCESS", user);

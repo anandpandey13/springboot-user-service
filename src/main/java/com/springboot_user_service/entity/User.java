@@ -28,5 +28,11 @@ public class User {
         return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
     }
     
-
 }
+
+/*
+Why entity often uses int - Entities sometimes use primitive types because:
+database columns may be NOT NULL
+avoids unnecessary object creation
+slightly better performance
+ */

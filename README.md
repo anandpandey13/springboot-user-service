@@ -115,3 +115,8 @@ Note - We did not enter id in request payload so user was not created but in sid
 - In case of throw Exception, we can return anything, it is not mandatory to return a ResponseEmtity or ApiResponse type.  
 Because when exception occurs, the flow of program comes out of the method without expecting to return anything.  
 After these chnages, we have status also like 400:Bad Request or 200:OK or 201:Created  
+  
+## Made sure to use Wrapper classes for DTOs and used primitives for entity class.  
+## Used 2 Annotations to structure the response.  
+- @JsonInclude(JsonInclude.Include.NON_NULL) : Excludes fields with null values from the JSON response.  
+- @JsonPropertyOrder({"message", "status","data"}) : Ensures JSON properties appear in the specified order: message, status, then data.
